@@ -15,6 +15,7 @@ public class UndoManager {
     private ArrayList<GameState> undo;
     private ArrayList<GameState> redo;
     private GameState gs;
+    //test
     
     UndoManager(){
         undo = new ArrayList();
