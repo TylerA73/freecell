@@ -6,7 +6,8 @@
 package freecell;
 
 /**
- *
+ * Stores the state of the game.
+ * 
  * @author Tyler
  */
 public class GameState {
@@ -14,7 +15,13 @@ public class GameState {
     Home[] h;
     Free[] f;
     
-    
+    /**
+     * Constructor for the GameState class.
+     * 
+     * @param t     Array of Tableau piles in which to save.
+     * @param h     Array of Home piles in which to save.
+     * @param f     Array of Free piles in which to save.
+     */
     GameState(Tableau[] t, Home[] h, Free[] f){
         this.t = new Tableau[8];
         this.h = new Home[4];
@@ -38,6 +45,11 @@ public class GameState {
         copyFree(f);
     }
     
+    /**
+     * Creates a deep copy of the Tableau piles being saved.
+     * 
+     * @param t     Array of Tableau piles. 
+     */
     public void copyTabs(Tableau[] t){
         
         for(int i = 0; i < t.length; i++){
@@ -48,6 +60,11 @@ public class GameState {
         
     }
     
+    /**
+     * Creates a deep copy of the Home Piles being saved.
+     * 
+     * @param h     Array of Home Piles. 
+     */
     public void copyHome(Home[] h){
         for(int i = 0; i < h.length; i++){
             for(int j = 0; j < h[i].getSize(); j++){
@@ -56,6 +73,11 @@ public class GameState {
         }
     }
     
+    /**
+     * Creates a deep copy of the Free Piles being saved.
+     * 
+     * @param f     Array of Free Piles. 
+     */
     public void copyFree(Free[] f){
         for(int i = 0; i < f.length; i++){
             for(int j = 0; j < f[i].getSize(); j++){
