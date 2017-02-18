@@ -203,9 +203,15 @@ public class FreeCell {
                     switch(input){
                         case "u":
                             gs = um.undo();
+                            t = gs.t;
+                            h = gs.h;
+                            f = gs.f;
                             break;
                         case "r":
                             gs = um.redo();
+                            t = gs.t;
+                            h = gs.h;
+                            f = gs.f;
                             break;
                         default:
                     }

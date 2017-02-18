@@ -32,9 +32,11 @@ public class UndoManager {
      * @param gs    A new GameState after a move has been made.
      */
     public void saveMove(GameState gs){
+        clearRedo();
+        System.out.println(redo.size());
         undo.add(this.gs);
         this.gs = gs;
-        clearRedo();
+        
         
     }
     
@@ -45,6 +47,7 @@ public class UndoManager {
      */
     public GameState undo(){
         redo.add(this.gs);
+        System.out.println(redo.size());
         this.gs = undo.remove(undo.size() - 1);
         
         return this.gs;
@@ -58,6 +61,7 @@ public class UndoManager {
     public GameState redo(){
         undo.add(this.gs);
         this.gs = redo.remove(redo.size() - 1);
+        System.out.println(redo.size());
         
         return this.gs;
     }
