@@ -33,7 +33,6 @@ public class UndoManager {
      */
     public void saveMove(GameState gs){
         clearRedo();
-        System.out.println(redo.size());
         undo.add(this.gs);
         this.gs = gs;
         
@@ -46,8 +45,8 @@ public class UndoManager {
      * @return  The previous GameState;
      */
     public GameState undo(){
+        
         redo.add(this.gs);
-        System.out.println(redo.size());
         this.gs = undo.remove(undo.size() - 1);
         
         return this.gs;
@@ -59,10 +58,10 @@ public class UndoManager {
      * @return  The last undone GameState;
      */
     public GameState redo(){
-        undo.add(this.gs);
-        this.gs = redo.remove(redo.size() - 1);
-        System.out.println(redo.size());
-        
+        if(redo.size() > 0){
+            undo.add(this.gs);
+            this.gs = redo.remove(redo.size() - 1);
+        }
         return this.gs;
     }
     
@@ -74,6 +73,24 @@ public class UndoManager {
         redo.clear();
       
         
+    }
+    
+    /**
+     * Check to see if the undo list is empty.
+     * 
+     * @return  True if undo stack is empty, false if not. 
+     */
+    public boolean isUndoEmpty(){
+        return (undo.size() <= 1);
+    }
+    
+    /**
+     * Check to see if the redo list is empty.
+     * 
+     * @return  True if redo stack is empty, false if not. 
+     */
+    public boolean isRedoEmpty(){
+        return redo.isEmpty();
     }
     
     

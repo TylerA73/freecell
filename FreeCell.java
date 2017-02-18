@@ -177,10 +177,10 @@ public class FreeCell {
         while(cont)
         {
             
-            printHome(gs.h);
-            printFree(gs.f);
-            printTab(gs.t);
-            printRows(gs.t);
+            printHome(h);
+            printFree(f);
+            printTab(t);
+            printRows(t);
             
             System.out.println("Move format <From col [optional: row] : To col>");
             System.out.println("Ex: T32 T4, T4 T6, T1 H1");
@@ -202,16 +202,24 @@ public class FreeCell {
                 }else{
                     switch(input){
                         case "u":
-                            gs = um.undo();
-                            t = gs.t;
-                            h = gs.h;
-                            f = gs.f;
+                            if(!um.isUndoEmpty()){
+                                gs = um.undo();
+                                t = gs.t;
+                                h = gs.h;
+                                f = gs.f;
+                            }else{
+                                System.out.println("CANNOT UNDO!");
+                            }
                             break;
                         case "r":
-                            gs = um.redo();
-                            t = gs.t;
-                            h = gs.h;
-                            f = gs.f;
+                            if(!um.isRedoEmpty()){
+                                gs = um.redo();
+                                t = gs.t;
+                                h = gs.h;
+                                f = gs.f;
+                            }else{
+                                System.out.println("CANNOT REDO!");
+                            }
                             break;
                         default:
                     }
